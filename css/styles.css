@@ -48,10 +48,14 @@ h3 {
 }
 h4 {
 	 font-family: algerian regular;
-	 font-size: 1.9em;
+	 font-size: 1.8em;
      padding-left: 10px;
 	 padding-top: 1px;
 	 padding-bottom: 5px;
+}
+h5 {
+	font-family: poor richard regular;
+	 font-size: 3em;
 }
 nav { padding-top: 5px;
       float: left;

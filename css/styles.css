@@ -1,0 +1,89 @@
+header, nav, main, footer { display: block; }
+body { background-color: rgba(255, 255, 204, 0.3);
+       font-family: Verdana, Arial, sans-serif;
+}
+#wrapper { width: 1760px;
+           margin: auto;
+		   background-color: rgba(255, 255, 204, 0.7);
+		   color: #0000FF;
+		   box-shadow: 5px 5px 5px #000000;
+		   font-weight: bold;
+}
+h1 { background-image: url(../images/yugibanner.png);
+	 background-position: right;
+	 background-size: 50% auto;
+     background-repeat: no-repeat;
+	 height: 200px;
+	 font-family: old english text mt;
+	 font-size: 3.5em;
+     padding-left: 50px;
+	 padding-top: 20px;
+	 text-shadow: 1px 1px 1px #90745D;
+	 margin-bottom: 0;
+	 border: 3px solid black;
+}
+p {
+	font-size: 1.3em;
+}
+ol {
+	font-size: 1.3em;
+}
+h2 {
+	 height: 80px;
+	 font-family: rage italic;
+	 font-size: 3em;
+     padding-left: 10px;
+	 padding-top: 10px;
+	 text-shadow: none
+	 margin-bottom: 0;
+}
+h3 {
+	 height: 30px;
+	 font-family: latin wide;
+	 font-size: 2.5em;
+     padding-left: 10px;
+	 padding-top: 10px;
+	 padding-bottom: 25px;
+	 font-weight: bold;
+}
+h4 {
+	 font-family: algerian regular;
+	 font-size: 1.9em;
+     padding-left: 10px;
+	 padding-top: 1px;
+	 padding-bottom: 5px;
+}
+nav { padding-top: 5px;
+      float: left;
+      width: 200px; 
+	  border: 3px solid black;
+}
+nav ul { list-style-type: none; 
+       padding-left: 20px;
+	 }
+nav li { padding-bottom: 5px;
+       font-weight: bold;
+}
+nav a { text-decoration: none; }
+nav a:link { color: #FFFFFF; }
+nav a:visited{ color: #FFFFFF; }
+nav a:hover { color: #FF0000; }
+
+
+main { background-color: none;
+          margin-left: 200px;
+          padding: 1px 20px 20px 20px;   
+		  min-height: 300px;
+}
+main img {
+              padding: 20px;
+}
+
+footer { background-color: rgba(255, 255, 204, 0.8);
+       margin-left: 200px;
+       padding: 20px;
+       text-align: center;
+	   font-size: small;
+	   font-style: italic;
+}
+	  

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Battle City Inn</title>
+    <meta charset="utf-8">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body style="background-image: url(images/kcorp.jpg); background-repeat: no-repeat; background-size: cover;">
+
+<div id="wrapper">
+    <header>
+        <h1 style="color: black;">Battle City Inn.</h1>
+    </header>
+        
+    <nav>
+        <ul> 
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rooms/room1.html">Pharaoh Room</a></li>
+            <li><a href="rooms/room2.html">Champion Room</a></li>
+            <li><a href="events/weekend.html">Weekend Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="additional benefits.html">Additional Benefits</a></li> 
+        </ul>
+    </nav>
+
+    <!-- Benefits and Calculation Section -->
+    <main style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; margin: 20px; color: black; font-family: sans-serif;">
+        <h2>Select Your Additional Benefits</h2>
+        
+        <form id="calcForm">
+            <div>
+                <input type="checkbox" id="parking" value="80">
+                <label for="parking">Elite Parking — $80</label>
+            </div>
+            <div>
+                <input type="checkbox" id="review" value="150">
+                <label for="review">Professional Deck Review — $150</label>
+            </div>
+            <div>
+                <input type="checkbox" id="vip" value="200">
+                <label for="vip">VIP Pass — $200</label>
+            </div>
+            <br>
+            <!-- First button calculates the subtotal and tax -->
+            <button type="button" onclick="calculateTotal()" style="padding: 10px 20px; cursor: pointer;">Calculate Total</button>
+        </form>
+
+        <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
+            <p id="subtotalDisplay">Subtotal: $0.00</p>
+            <p id="taxDisplay">Tax (8%): $0.00</p>
+            <h3 id="totalDisplay">Total: $0.00</h3>
+        </div>
+
+        <!-- Submit Order Button (Hidden until calculated) -->
+        <button id="submitBtn" type="button" onclick="submitOrder()" style="padding: 12px 25px; cursor: pointer; background-color: #000; color: #fff; border: none; border-radius: 5px; margin-top: 10px; display: none;">
+            Submit Order
+        </button>
+    </main>
+
+</div>
+
+<script>
+    // Global variable to store final total for the submission alert
+    let finalOrderTotal = 0;
+
+    function calculateTotal() {
+        let subtotal = 0;
+        const taxRate = 0.08; // 8% tax rate
+
+        // Check which items are selected
+        if (document.getElementById('parking').checked) subtotal += 80;
+        if (document.getElementById('review').checked) subtotal += 150;
+        if (document.getElementById('vip').checked) subtotal += 200;
+
+        let taxAmount = subtotal * taxRate;
+        finalOrderTotal = subtotal + taxAmount;
+
+        // Update the screen with the detailed formatted values for minimmum confusion
+        document.getElementById('subtotalDisplay').innerText = "Subtotal: $" + subtotal.toFixed(2);
+        document.getElementById('taxDisplay').innerText = "Tax (8%): $" + taxAmount.toFixed(2);
+        document.getElementById('totalDisplay').innerText = "Total: $" + finalOrderTotal.toFixed(2);
+
+        // Show the submit button only if a selection was made and the cost was calculated
+        if (subtotal > 0) {
+            document.getElementById('submitBtn').style.display = "block";
+        } else {
+            document.getElementById('submitBtn').style.display = "none";
+        }
+    }
+
+    function submitOrder() {
+        // Use confirm button to get a "Yes/No" choice from the website
+        let confirmation = confirm("Are you sure you want to place this order for $" + finalOrderTotal.toFixed(2) + "?");
+        
+        if (confirmation) {
+            alert("Thank you! Your order has been placed.");
+            // Reset the form after a successful purchase or order cancellation
+            document.getElementById('calcForm').reset();
+            calculateTotal();
+        } else {
+            alert("Order cancelled. You can continue editing your selection.");
+        }
+    }
+</script>
+
+</body>
+</html>

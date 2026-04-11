@@ -1,10 +1,10 @@
 header, nav, main, footer { display: block; }
 
-/* FIXED: Added background-attachment and removed zoom scaling */
+/* Added background-attachment and removed zoom scaling */
 body { 
   background-color: rgba(255, 255, 204, 0.3);
   font-family: Verdana, Arial, sans-serif;
-  background-image: url('../images/kcorp.jpg'); /* Ensure path is correct */
+  background-image: url('../images/kcorp.jpg'); /* Ensure path */
   background-repeat: no-repeat;
   background-attachment: fixed; 
   background-position: center;
@@ -96,8 +96,8 @@ h3 {
     background-color: #301934 !important; /* Deep Plum/Dark Purple */
     color: #FFFFFF !important;
     padding: 15px 25px !important;
-    border-radius: 8px;                   /* Optional: rounds the corners */
-    border: 2px solid #5D3FD3;            /* Optional: lighter purple border */
+    border-radius: 8px;                   /* rounds the corners */
+    border: 2px solid #5D3FD3;            /* lighter purple border */
     
     /* Center the box on the page */
     margin: 0 auto 20px auto !important;
@@ -128,10 +128,10 @@ main h3 {
 }
 
 main img {
-  clear: both;            
-  display: block;         
-  margin: 20px 0; 
-  max-width: 100%;      
+  margin: 10px;
+  vertical-align: top;
+  max-width: 100%;   /* prevents overflow */
+  height: auto;      /* keeps proportions */
 }
 
 h4 {
@@ -165,7 +165,7 @@ h6 {
 }
 
 
-/* FIXED: Horizontal Navigation Styling */
+/* Horizontal Navigation Styling */
 nav { 
   padding: 15px 0;
   border-bottom: 3px solid black; 
@@ -200,7 +200,7 @@ nav a:hover {
   border-radius: 4px;        
 }
 
-/* FIXED: Removed margin-left to center content now that nav is at the top */
+/* Removed margin-left to center content now that nav is at the top */
 main {
   margin-left: 0;
   padding: 20px 40px;   
@@ -208,7 +208,7 @@ main {
   clear: both;
 }
 
-/* FIXED: Removed margin-left */
+/* Removed margin-left */
 footer { 
   background-color: rgba(255, 255, 204, 0.8);
   margin-left: 0;
@@ -225,4 +225,70 @@ figure {
   margin: 15px;
   text-align: center;
   vertical-align: top;
+}
+
+table {
+  border: 3px solid black;
+  border-radius: 15px;
+  border-collapse: separate;
+  margin: 20px auto;
+  padding: 15px;
+}
+
+table {
+  width: 350px;
+  margin: 20px;
+  display: inline-block;
+  vertical-align: top;
+  border: 3px solid black;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.prime {
+  background-color: #7CFC00; /* green */
+}
+
+.new {
+  background-color: #7FFFD4; /* light blue */
+}
+
+caption {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+th {
+  text-align: left;
+  padding-right: 10px;
+}
+
+td {
+  padding: 5px;
+}
+/* Up vote or down vote section for feedback on each review */
+.thumb-btn {
+  font-size: 20px;
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ddd;
+  transition: 0.3s;
+}
+
+.thumb-btn:hover {
+  background-color: #bbb;
+}
+
+/* Highlight selected button */
+.thumb-btn.active {
+  background-color: gold;
+  transform: scale(1.2);
+}
+
+caption {
+  color: black;
 }

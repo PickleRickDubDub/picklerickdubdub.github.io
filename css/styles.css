@@ -27,7 +27,7 @@ h1 {
   background-repeat: no-repeat;
   height: 200px;
   font-family: "Old English Text MT", serif;
-  font-size: 3.5em;
+  font-size: 5.5em;
   padding-left: 50px;
   padding-top: 20px;
   text-shadow: 1px 1px 1px #90745D;
@@ -291,4 +291,234 @@ td {
 
 caption {
   color: black;
+}
+
+/* lightbox code------------------------------------------------*/
+
+/* --- Lightbox Overlay --- */
+#lbOverlay {
+  display: none; /* Hidden until triggered by JS */
+  position: fixed;
+  z-index: 2000; /* High number so it stays on top of everything */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Darken the background */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Lightbox Title - Matches your H1 font */
+#lbTitle {
+  color: #FFD700;
+  font-family: "Old English Text MT", serif;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* The Image Frame */
+#lbImg {
+  max-width: 80%;
+  max-height: 70vh;
+  border: 5px solid #D4AF37; /* Elegant Gold border */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  background-color: black;
+}
+
+/* The Caption - Matches your List Box colors */
+#lbCaption {
+  background-color: rgba(0, 0, 139, 0.9); /* Deep Blue like your <ol> */
+  color: #FFFFFF;
+  padding: 10px 30px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 2px solid #D4AF37;
+  font-family: Verdana, sans-serif;
+}
+
+/* Navigation & Close Buttons */
+#lbClose, #lbNext, #lbPrev {
+  position: absolute;
+  color: #FFFFFF;
+  font-size: 60px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s;
+}
+
+#lbClose { top: 30px; right: 50px; color: #FF0000; } /* Red for close */
+#lbNext { right: 40px; top: 50%; }
+#lbPrev { left: 40px; top: 50%; }
+
+#lbNext:hover, #lbPrev:hover { color: #FFD700; transform: scale(1.2); }
+#lbClose:hover { color: #FFD700; }
+
+/* gallery code ----------------------------------------------------*/
+
+/* --- Lightbox Gallery Container (The strip of images) --- */
+#lbImages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  overflow: hidden; /* Keeps the sliding images contained */
+}
+
+#lbImages img {
+  width: 150px; /* Adjust size of thumbnails */
+  cursor: pointer;
+  border: 2px solid #D4AF37;
+  transition: 0.3s;
+}
+
+#lbImages img:hover {
+  transform: scale(1.1);
+  border-color: #FF0000;
+}
+
+/* --- Counter, Play, and Nav Buttons --- */
+#lbCounter, #lbPlay, #lbPrev, #lbNext {
+  text-align: center;
+  color: #0000FF;
+  font-weight: bold;
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+
+#lbPlay:hover, #lbPrev:hover, #lbNext:hover {
+  color: #FF0000;
+}
+
+/* --- The Overlay (The Full Screen Pop-up) --- */
+#lbOverlay {
+  display: flex;
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#lbOverlay figure {
+  text-align: center;
+}
+
+#lbOverlay img {
+  max-width: 80%;
+  max-height: 70vh;
+  border: 4px solid #D4AF37;
+}
+
+#lbOverlay figcaption {
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 139, 0.8);
+  padding: 10px;
+  margin-top: 10px;
+  font-family: Verdana, sans-serif;
+  border: 1px solid #D4AF37;
+}
+
+/* --- The Close Button (Matched to your script's ID) --- */
+#lbOverlayClose {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #FF0000;
+  font-size: 60px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#lbOverlayClose:hover {
+  color: #FFD700;
+}
+
+/* Removes the Yu-Gi-Oh banner from the gallery title only */
+#lbTitle {
+    background-image: none !important;
+    height: auto !important;
+    border: none !important;
+    padding: 10px 0 !important;
+    font-size: 5em !important;
+    color: #90745D !important; /* Matches your text shadow color */
+    text-align: center;
+}
+
+/* Styling the Lightbox Title */
+#lbTitle {
+    color: #FF0000 !important; /* Pure Red Font */
+    /* Creates a Gold Outline using multiple shadows */
+    text-shadow: 
+        -1px -1px 0 #D4AF37,  
+         1px -1px 0 #D4AF37,
+        -1px  1px 0 #D4AF37,
+         1px  1px 0 #D4AF37,
+         2px  2px 4px #000000; /* Adds a small black drop shadow for depth */
+    font-family: "Old English Text MT", serif;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+/* Styling the Image Captions in the Overlay */
+#lbOverlay figcaption {
+    color: #FF0000; /* Pure Red Font */
+    font-weight: bold;
+    font-size: 1.5em;
+    /* Gold Outline */
+    text-shadow: 
+        -1px -1px 0 #FFD700,  
+         1px -1px 0 #FFD700,
+        -1px  1px 0 #FFD700,
+         1px  1px 0 #FFD700;
+    margin-top: 15px;
+}
+
+/* Container for the navigation buttons */
+#lbNavBox {
+  text-align: center;
+  margin: 10px 0;
+}
+
+#lbPrev, #lbNext {
+  display: inline-block;
+  position: static; /* Removes them from the edges of the page */
+  font-size: 40px;
+  color: #0000FF;
+  cursor: pointer;
+  margin: 0 50px; /* Adjust this to move them closer or further apart */
+  transition: 0.3s;
+  user-select: none;
+}
+
+#lbPrev:hover, #lbNext:hover {
+  color: #FF0000;
+  transform: scale(1.2);
+}
+
+/* Forces the Play/Pause icon to match the size of the arrows */
+#lbPlay {
+  font-size: 55px !important; /* Slightly larger to compensate for the emoji scale */
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+/* Ensures the arrows stay consistent */
+#lbPrev, #lbNext {
+  font-size: 45px !important;
+  line-height: 1;
+  vertical-align: middle;
 }

@@ -184,6 +184,7 @@ window.copyAddress = function() {
         document.getElementById('ship-address').value = "";
         document.getElementById('ship-city').value = "";
         document.getElementById('ship-zip').value = "";
+		
     }
 };
 

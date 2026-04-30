@@ -245,3 +245,12 @@ footer {
   border-top: 2px solid black;
   color: black;
 }
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+.input-row input {
+    flex: 1;
+    width: auto !important; 
+}

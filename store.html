@@ -12,7 +12,6 @@
 
     <header>
         <h1 style="color: black;">Online Store</h1>
-        <!-- Button removed from here to clear the header area -->
     </header>
 
     <nav>
@@ -34,7 +33,7 @@
         <!-- Catalog Section -->
         <div id="catalog" class="product-grid"></div>
 
-        <!-- NEW: Cart Button Location at bottom of product list -->
+        <!-- Cart Button -->
         <div style="text-align: center; margin-top: 30px; padding-bottom: 20px;">
             <button class="cart-toggle-btn" onclick="toggleCart()">🛒 View Shopping Cart (<span id="cart-count">0</span>)</button>
         </div>
@@ -57,45 +56,57 @@
             
             <form id="checkout-form">
                 <h3>Billing Information</h3>
-                <input type="text" id="name" placeholder="Full Name (Required)">
+                <input type="text" id="name" placeholder="Customer Name (Required)">
                 <div id="name-err" class="error"></div>
                 
                 <input type="email" id="email" placeholder="Email (Required)">
                 <div id="email-err" class="error"></div>
                 
                 <input type="text" id="bill-address" placeholder="Billing Address (Required)">
+                
+                <!-- Added City and Zip for Billing -->
+                <div class="input-row">
+                    <input type="text" id="bill-city" placeholder="City (Required)">
+                    <input type="text" id="bill-zip" placeholder="ZIP Code (Required)">
+                </div>
                 <div id="addr-err" class="error"></div>
 
-                <div class="checkbox-group">
+                <div class="checkbox-group" style="margin: 15px 0;">
                     <input type="checkbox" id="copy-addr" onclick="copyAddress()"> 
                     <label for="copy-addr">Shipping same as Billing?</label>
                 </div>
 
                 <h3>Shipping Address</h3>
-                <input type="text" id="ship-address" placeholder="Shipping Address">
+				<input type="text" id="ship-name" placeholder="Customer Name">
+                <input type="text" id="ship-address" placeholder="Shipping Street Address">
                 
-                <button type="submit" class="btn checkout-btn">Complete Purchase</button>
+                <!-- Added City and Zip for Shipping -->
+                <div class="input-row">
+                    <input type="text" id="ship-city" placeholder="Shipping City">
+                    <input type="text" id="ship-zip" placeholder="Shipping ZIP Code">
+                </div>
+                
+                <button type="submit" class="btn checkout-btn" style="margin-top: 20px;">Complete Purchase</button>
             </form>
         </div>
 
-    <!-- Success Message -->
-<div id="final-msg" class="store-section hidden" style="text-align: center; padding: 40px;">
-    <!-- Using a styled div instead of h1 -->
-    <div style="color: #27ae60; font-size: 32px; font-weight: bold; margin-bottom: 20px;">
-        Order Successful!
-    </div>
-    
-    <p style="color: #333; font-size: 18px;">
-        Thank you for shopping at Battle City. A confirmation email has been sent.
-    </p>
-    
-    <button class="btn" onclick="location.reload()" style="margin-top: 20px;">
-        Start New Order
-    </button>
-</div>
-
-
+        <!-- Success Message -->
+        <div id="final-msg" class="store-section hidden" style="text-align: center; padding: 40px;">
+            <div style="color: #27ae60; font-size: 32px; font-weight: bold; margin-bottom: 20px;">
+                Order Successful!
+            </div>
+            <p style="color: #333; font-size: 18px;">
+                Thank you for shopping at Battle City. A confirmation email has been sent.
+            </p>
+            <button class="btn" onclick="location.reload()" style="margin-top: 20px;">
+                Start New Order
+            </button>
+        </div>
     </main>
+
+    <footer>
+        <p>&copy; 2024 Battle City Store. All rights reserved.</p>
+    </footer>
 
 </div>
 </body>

@@ -107,7 +107,6 @@ window.updateCart = function() {
     cart.forEach((item, index) => {
         total += item.price * item.qty;
         
-        // --- NEW LOGIC: Only show Color/Size if they aren't 'N/A' ---
         let details = "";
         if (item.selectedColor !== 'N/A' || item.selectedSize !== 'N/A') {
             const colorText = item.selectedColor !== 'N/A' ? item.selectedColor : "";
@@ -123,7 +122,9 @@ window.updateCart = function() {
                     $${item.price} each
                 </div>
                 <div>
-                    <strong>Qty:</strong> <input type="number" value="${item.qty}" min="1" onchange="updateQty(${index}, this.value)" style="width:40px">
+                    <strong>Qty:</strong> 
+                    <!-- Added max="10" here -->
+                    <input type="number" value="${item.qty}" min="1" max="10" onchange="updateQty(${index}, this.value)" style="width:40px">
                     <button class="btn btn-danger" onclick="removeItem(${index})">Remove</button>
                 </div>
             </div>`;
@@ -132,7 +133,18 @@ window.updateCart = function() {
 }
 
 
-window.updateQty = function(idx, val) { cart[idx].qty = parseInt(val); updateCart(); }
+
+window.updateQty = function(idx, val) { 
+    let newQty = parseInt(val);
+    
+    // Silent Cap: If higher than 10, force to 10. If lower than 1, force to 1.
+    if (newQty > 10) newQty = 10;
+    if (newQty < 1 || isNaN(newQty)) newQty = 1;
+
+    cart[idx].qty = newQty; 
+    updateCart(); 
+};
+
 window.removeItem = function(idx) { cart.splice(idx, 1); updateCart(); }
 
 window.toggleCart = function() {
@@ -151,10 +163,24 @@ window.showCheckout = function() {
 }
 
 window.copyAddress = function() {
-    if(document.getElementById('copy-addr').checked) {
+    const isChecked = document.getElementById('copy-addr').checked;
+    
+    if (isChecked) {
+        // Copy Name + Street + City + ZIP
+        document.getElementById('ship-name').value = document.getElementById('name').value;
         document.getElementById('ship-address').value = document.getElementById('bill-address').value;
+        document.getElementById('ship-city').value = document.getElementById('bill-city').value;
+        document.getElementById('ship-zip').value = document.getElementById('bill-zip').value;
+    } else {
+        // Clear all four fields if unchecked
+        document.getElementById('ship-name').value = "";
+        document.getElementById('ship-address').value = "";
+        document.getElementById('ship-city').value = "";
+        document.getElementById('ship-zip').value = "";
     }
-}
+};
+
+
 
 // Handle Form Submission
 const form = document.getElementById('checkout-form');
@@ -181,6 +207,8 @@ if(form) {
         if(valid) {
             document.getElementById('checkout-view').classList.add('hidden');
             document.getElementById('final-msg').classList.remove('hidden');
+			
+			document.querySelector('.cart-toggle-btn').classList.add('hidden');
         }
     };
 }

@@ -16,7 +16,7 @@ const products = [
     { id: 8, name: "Egyptian Gods booster packs.", price: 19.99, desc: "To truly command the power of the original series, you need the Egyptian God Card Booster Packs. The ultimate prize for summoning Slifer, Obelisk, and Ra.", quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], img: "images/product8.png" }
 ];
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Initialize Catalog
 function renderCatalog() {
@@ -65,6 +65,11 @@ function renderCatalog() {
     });
 }
 
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+
 window.addToCart = function(id, event) {
     const p = products.find(prod => prod.id === id);
     const color = document.getElementById(`color-${id}`)?.value || 'N/A';
@@ -73,6 +78,7 @@ window.addToCart = function(id, event) {
     
     // 1. Add to the actual data array
     cart.push({ ...p, selectedColor: color, selectedSize: size, qty: selectedQty });
+	saveCart();
     updateCart();
 
     // 2. Visual Feedback (The Button Change)
@@ -142,10 +148,11 @@ window.updateQty = function(idx, val) {
     if (newQty < 1 || isNaN(newQty)) newQty = 1;
 
     cart[idx].qty = newQty; 
+	saveCart();
     updateCart(); 
 };
 
-window.removeItem = function(idx) { cart.splice(idx, 1); updateCart(); }
+window.removeItem = function(idx) { cart.splice(idx, 1); saveCart(); updateCart(); }
 
 window.toggleCart = function() {
     document.getElementById('cart-view').classList.toggle('hidden');
@@ -230,3 +237,4 @@ window.updateProductPrice = function(id) {
         p.price = newPrice;
     }
 }
+updateCart();
